@@ -1,0 +1,823 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" href="Images/Logo/Icon-AtFlowLogo.png">
+
+    <title>AtFlow - Web Design</title>
+
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" 
+    integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- JQuery -->
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+
+    <!-- Font Google Lato -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <!-- Font Google Roboto -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+
+            $('#wallpaper').css({'background-image':'url("Images/wallpaper-top.jpg")',
+            'transition':'background 1s'});
+            
+            $('#apresentacao, #oq-fazemos, #rodape-main, #wallpaper, #servicos, .navbar-custom')
+            .css('visibility', 'visible');
+            h1_Head();
+            jump_Button();
+            Scroll_Sections();
+            Hover_Menu_Normal();
+
+            $(window).scroll(function (event) {
+                var scroll = $(window).scrollTop();
+                if(scroll > 250){
+                    $('.navbar-custom').css({'background-color':'white', 'height':'75px',
+                     'box-shadow':'10px 2px 10px 2px grey', 'transition':'background 1s, height 0.4s'});
+                    $('.navbar-brand').css({'padding':'0px', 'background-color':'transparent',
+                     'transition':'background 1s'});
+                    $('.navbar-brand>img').css({'height':'65px', 'margin-top':'5px',
+                     'transition':'0.5s'});
+                    $('.navbar-custom>.container>div>.nav>li').css({'height':'75px', 'transition':'height 0.4s'});
+                    $('.navbar-custom>.container>div>.nav>li>a').css({'color':'#189FD2', 'border-bottom':'none'});
+                    Hover_Menu_250();
+                }else{
+                    $('.navbar-custom').css({'background-color':'transparent', 'height':'100px',
+                     'box-shadow':'none', 'transition':'background 1s, height 0.4s'});
+                    $('.navbar-brand').css({'padding':'30px', 'background-color':'whitesmoke',
+                     'transition':'background 1s'});
+                    $('.navbar-brand>img').css({'height':'90px', 'margin-top':'0px',
+                     'transition':'0.5s'});
+                    if($(window).width() > 767){
+                        $('.navbar-custom>.container>div>.nav>li').css({'height':'150px', 'transition':'height 0.4s'});
+                        $('.navbar-custom>.container>div>.nav>li>a').css({'color':'white', 
+                        'border-bottom':'solid whitesmoke 2px'});
+                        Hover_Menu_Normal();
+                    }else{
+                        $('.navbar-custom>.container>div>.nav>li').css({'height':'75px', 'transition':'height 0.4s'});
+                        $('.navbar-custom>.container>div>.nav>li>a').css({'height':'auto', 'width':'100%', 
+                        'font-size':'18px', 'padding':'20px', 'color':'#189FD2'});
+                    }
+                }
+
+                if(scroll > 300){
+                    Effects_Apresentacao();
+                }
+                if(scroll > 800){
+                    Effects_Servicos();
+                }
+                if(scroll > 1100){
+                    Effects_Como_Trabalhamos();
+                }
+                if(scroll > 1500){
+                    Effects_Oq_Fazemos();
+                }
+            });
+        });
+
+        function Effects_Servicos(){
+            $('#servicos>div>div').css({'transform':'rotate(-20deg)', 'transition':'transform 1s'});
+        }
+
+        function Effects_Como_Trabalhamos(){
+            $('#como-trabalhamos>.container>div').css({'width':'100%', 'visibility':'visible',
+            'opacity':'1', 'transition':'width 1s, visibility 0.3s, opacity 0.3s'});
+            $('#como-trabalhamos>.container>div>div>div').css({'visibility':'visible',
+            'opacity':'1', 'transition':'visibility 5s, opacity 5s'});
+        }
+        function Effects_Oq_Fazemos(){
+            $('#oq-fazemos>div>h1').css({'margin-left':'0', 'visibility':'visible',
+            'transition':'margin 1.5s'});
+            $('#btn-contato').css({'border-radius':'5px', 'visibility':'visible', 'height':'60px',
+            'width':'150px', 'transition':'border 1s, width 1s, height 1s, box-shadow 0.3s'});
+        }
+        function Effects_Apresentacao(){
+            $('#apresentacao>div>div').css({'margin-right':'0px', 'transition':'margin 1s'});
+        }
+
+        function Hover_Menu_Normal(){
+            $('#a-inicio').mouseover(function(){
+                $('#a-inicio').css({'color':'#189FD2', 'transition':'color 1s', '-o-transition':'color 1s',
+                '-moz-transition': 'color 1s', '-webkit-transition':'color 1s'});
+            });
+            $('#a-inicio').mouseout(function(){
+                $('#a-inicio').css({'color':'white', 'transition':'color 1s', '-o-transition':'color 1s',
+                '-moz-transition': 'color 1s', '-webkit-transition':'color 1s'});
+            });
+            $('#a-portfolio').mouseover(function(){
+                $('#a-portfolio').css({'color':'#189FD2', 'transition':'color 1s', '-o-transition':'color 1s',
+                '-moz-transition': 'color 1s', '-webkit-transition':'color 1s'});
+            });
+            $('#a-portfolio').mouseout(function(){
+                $('#a-portfolio').css({'color':'white', 'transition':'color 1s', '-o-transition':'color 1s',
+                '-moz-transition': 'color 1s', '-webkit-transition':'color 1s'});
+            });
+            $('#a-contato').mouseover(function(){
+                $('#a-contato').css({'color':'#189FD2', 'transition':'color 1s', '-o-transition':'color 1s',
+                '-moz-transition': 'color 1s', '-webkit-transition':'color 1s'});
+            });
+            $('#a-contato').mouseout(function(){
+                $('#a-contato').css({'color':'white', 'transition':'color 1s', '-o-transition':'color 1s',
+                '-moz-transition': 'color 1s', '-webkit-transition':'color 1s'});
+            });
+        }
+        
+        function Hover_Menu_250(){
+            $('#a-inicio').mouseover(function(){
+                $('#a-inicio').css({'color':'#189FD2', 'transition':'color 1s', '-o-transition':'color 1s',
+                '-moz-transition': 'color 1s', '-webkit-transition':'color 1s'});
+            });
+            $('#a-inicio').mouseout(function(){
+                $('#a-inicio').css({'color':'#189FD2', 'transition':'color 1s', '-o-transition':'color 1s',
+                '-moz-transition': 'color 1s', '-webkit-transition':'color 1s'});
+            });
+            $('#a-portfolio').mouseover(function(){
+                $('#a-portfolio').css({'color':'#189FD2', 'transition':'color 1s', '-o-transition':'color 1s',
+                '-moz-transition': 'color 1s', '-webkit-transition':'color 1s'});
+            });
+            $('#a-portfolio').mouseout(function(){
+                $('#a-portfolio').css({'color':'#189FD2', 'transition':'color 1s', '-o-transition':'color 1s',
+                '-moz-transition': 'color 1s', '-webkit-transition':'color 1s'});
+            });
+            $('#a-contato').mouseover(function(){
+                $('#a-contato').css({'color':'#189FD2', 'transition':'color 1s', '-o-transition':'color 1s',
+                '-moz-transition': 'color 1s', '-webkit-transition':'color 1s'});
+            });
+            $('#a-contato').mouseout(function(){
+                $('#a-contato').css({'color':'#189FD2', 'transition':'color 1s', '-o-transition':'color 1s',
+                '-moz-transition': 'color 1s', '-webkit-transition':'color 1s'});
+            });
+        }
+
+        function h1_Head(){
+            setTimeout(function(){ 
+                $("#wallpaper>div>h1").fadeOut(function() {
+                    $(this).text("Criação de sites profissionais").fadeIn();
+                });    
+                setTimeout(function(){ 
+                    $("#wallpaper>div>h1").fadeOut(function() {
+                        $(this).text("Seu e-mail profissional está aqui").fadeIn();
+                    });
+                    setTimeout(function(){ 
+                        $("#wallpaper>div>h1").fadeOut(function() {
+                            $(this).text("Criação de cartões de visita").fadeIn();
+                        });
+                        setTimeout(function(){ 
+                            $("#wallpaper>div>h1").fadeOut(function() {
+                                $(this).text("Bem-vindo à AtFlow Web Design").fadeIn();
+                            });
+                            
+                            h1_Head();
+                        }, 3000);
+                    }, 3000);
+                }, 3000);
+            }, 3000);
+        }
+
+        function jump_Button(){
+            setTimeout(function(){
+                
+                setTimeout(function(){
+                    $('#btn-conhecer').css({'margin-top':'100px', 'transition':'margin 1.2s'});
+                    setTimeout(function(){
+                        $('#btn-conhecer').css({'margin-top':'60px', 'transition':'margin 1.5s'});
+                        setTimeout(function(){
+                            $('#btn-conhecer').css({'margin-top':'100px', 'transition':'margin 1.2s'});
+                            setTimeout(function(){
+                                $('#btn-conhecer').css({'margin-top':'60px', 'transition':'margin 1.5s'});
+                            }, 800);
+                        }, 1200);
+                    }, 800);
+                }, 1200);
+
+                jump_Button();
+            }, 6000)
+        }
+
+        function Scroll_Sections(){
+            $('#btn-conhecer').click(function(){
+                $(window).scrollTop(500);
+            });
+        }
+
+    </script>
+</head>
+
+<body>
+    
+    <section style="visibility: hidden;" id="wallpaper">
+        <div>
+            <h1>Bem-vindo à AtFlow Web Design</h1>
+            <div id="btn-conhecer">Conhecer</div>
+        </div>
+    </section>
+
+    <nav style="visibility: hidden;" class="navbar navbar-custom navbar-fixed-top">
+        <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-toggle">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+        
+                    <div class="navbar-brand"> <img src="Images/Logo/AtFlowLogo.png"> </div>
+                </div>
+
+            <div class="collapse navbar-collapse" id="nav-toggle">
+                <ul class="nav navbar-nav navbar-right">
+                    <li> <a id="a-inicio" href="#wallpaper">Início</a> </li>
+                    <li> <a id="a-portfolio" href="#">Portfólio</a> </li>
+                    <li> <a id="a-contato" href="contato">Contato</a> </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section style="visibility: hidden;" id="apresentacao">
+        <div class="container">
+            <div>
+                <img src="Images/Icons/ok.png">
+                <h3>Design moderno e agradável</h3>
+            </div>
+            <div>
+                <img src="Images/Icons/ok.png">
+                <h3>Site dinâmico e auto-adaptável</h3>
+            </div>
+            <div>
+                <img src="Images/Icons/ok.png">
+                <h3>Ajudamos com a ideia</h3>
+            </div>
+            <div>
+                <img src="Images/Icons/ok.png">
+                <h3>Nosso foco é aumentar a visibilidade da sua empresa</h3>
+            </div>
+        </div>
+    </section>
+
+    <section style="visibility: hidden;" id="servicos">
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <h1>Criação de sites profissionais<br><br></h1>
+            <div>
+                <img src="Images/Icons/sites.png">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <h1>E-mail profissional<br>(@suaempresa.com.br)</h1>
+            <div>
+                <img src="Images/Icons/email_empresa.png">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <h1>Cartão de visita<br><br></h1>
+            <div>
+                <img src="Images/Icons/cartoes.png">
+            </div>
+        </div>
+    </section>
+
+    <section id="como-trabalhamos">
+        <div class="container">
+            <div style="visibility: hidden; opacity: 0;" class="col-xs-6 col-md-12">
+                <div style="visibility: hidden;" class="col-xs-6 col-sm-3 col-md-3">
+                    <div>
+                        <img src="Images/Icons/ok_services.png">
+                        <h3>Incomparável</h3>
+                        <h4>Originalidade em cada projeto</h4>
+                    </div>
+                </div>
+                <div style="visibility: hidden;" class="col-xs-6 col-sm-3 col-md-3">
+                    <div>
+                        <img src="Images/Icons/responsive_services.png">
+                        <h3>Responsivo</h3>
+                        <h4>Sites que se adaptam em qualquer plataforma</h4>
+                    </div>
+                </div>
+                <div style="visibility: hidden;" class="col-xs-6 col-sm-3 col-md-3">
+                    <div>
+                        <img src="Images/Icons/heart_services.png">
+                        <h3>Criativo</h3>
+                        <h4>Amamos o que fazemos, e os desafios nos empolgam</h4>
+                    </div>
+                </div>
+                <div style="visibility: hidden;" class="col-xs-6 col-sm-3 col-md-3">
+                    <div>
+                        <img src="Images/Icons/quality_services.png">
+                        <h3>Alta qualidade</h3>
+                        <h4>Tiramos sua ideia do papel com perfeição</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="visibility: hidden;" id="oq-fazemos">
+        <div>
+            <h1>Entre em contato e tire suas dúvidas!</h1>
+            <div onclick="location.href='contato'" id="btn-contato">
+                <h3>Contato</h3>
+            </div>
+        </div>
+    </section>
+
+    <section id="localizacao">
+        <img src="Images/Icons/localizacao.png">
+        <h4>São Bento do Sul, Santa Catarina</h4>
+    </section>
+
+    <section style="visibility: hidden;" id="rodape-main">
+        <div style="border-left: solid whitesmoke 2px;" id="email">
+            <div>
+                <img style="height: 40px;" src="Images/Icons/email_footer.png">
+                <h4 style="color: whitesmoke; margin-top: 15px;">atendimento@atflow.com.br</h4>
+            </div>
+        </div>
+        <div style="border-left: solid whitesmoke 2px;" id="telefone">
+            <div>
+                <img style="height: 40px;" src="Images/Icons/telefone_footer.png">
+                <h4 style="color: whitesmoke; margin-top: 15px;">(47)9 8414-0095</h4>
+            </div>
+        </div>
+        <div style="border-left: solid whitesmoke 2px; border-right: solid whitesmoke 2px;" id="redes-sociais">
+            <div>
+                <div>
+                    <img style="height: 25px;" src="Images/Icons/facebook.png">
+                </div>
+                <div>
+                    <img style="height: 25px;" src="Images/Icons/instagram.png">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+<style>
+    
+    html, body{ overflow-x: hidden; scroll-behavior: smooth; }
+    body{
+        font-family: "Lato", sans-serif;
+        background-color: whitesmoke;
+    }
+
+    .navbar-custom{ 
+        background-color: transparent; 
+        height: auto; 
+    }
+    .navbar-brand{ 
+        background-color: whitesmoke;
+        border-radius: 0px 0px 30px 30px;
+        height: auto;
+        padding: 30px;
+    }
+    .navbar-brand>img{ height: 90px; }
+    .navbar-custom>.container>div>.nav>li{ 
+        padding-left: 8px; 
+        padding-right: 8px; 
+        height: 150px;
+        display: flex;
+        align-items: center;
+    }
+    .navbar-custom>.container>div>.nav>li>a{ 
+        font-size: 15px; 
+        background-color: transparent; 
+        border-bottom: solid whitesmoke 2px;
+        color: white; 
+        font-weight: bold;
+    }
+    .navbar-custom>.container>.navbar-header>button{
+        border: solid whitesmoke 2px;
+        background-color: #19639B;
+        margin-top: 18px;
+        margin-right: 18px;
+        transition: background 0.4s;
+        -o-transition: background 0.4s;
+        -moz-transition: background 0.4s;
+        -webkit-transition: background 0.4s;
+    }
+    .navbar-custom>.container>.navbar-header>button>span{
+        background-color: white;
+    }
+
+    #wallpaper{
+        background-size: cover;
+        background-position: center;
+        height: 115%;
+        overflow-y: hidden;
+    }
+    #wallpaper>div{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+    #wallpaper>div>h1{
+        color: white;
+        font-size: 60px;
+        letter-spacing: 2px;
+        margin-bottom: 150px;
+    }
+    #btn-conhecer{
+        background-color:#19639B;
+        border-radius: 5px;
+        margin-top: 60px;
+        width: 160px;
+        height: 60px;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: whitesmoke;
+        font-size: 20px;
+        font-weight: bold;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        cursor: pointer;
+        box-shadow: 0px 3px 8px 0px grey;
+        transition: background 0.4s;
+        transition: background 0.4s;
+        -o-transition: background 0.4s;
+        -moz-transition: background 0.4s;
+        -webkit-transition: background 0.4s;
+    }
+    #btn-conhecer:hover{
+        background-color: #189FD2;
+    }
+    
+    #servicos{
+        height: 80%;
+        background-image: url('Images/wallpaper-9.jpg');
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+        overflow-y: hidden;
+    }
+    #servicos>div{
+        height: 100%;
+        text-align: center;
+    }
+    #servicos>div>h1{ 
+        color: whitesmoke; 
+        font-size: 24px; 
+        font-weight: bold; 
+        margin-top: 80px;
+    }
+    #servicos>div>div{
+        background-color: #189FD2;
+        margin: 0 auto;
+        margin-top: 70px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 180px;
+        width: 200px;
+    }
+    #servicos>div>div>img{
+        height: 70px;
+    }
+
+    /* Section 2 */
+    #oq-fazemos{
+        background-image: url('Images/wallpaper-2.jpg');
+        background-position: center;
+        background-attachment: fixed;
+        background-size: cover;
+        height: 90%;
+    }
+    #oq-fazemos>div{
+        background-color: rgba(255,255,255,0.8);
+        height: 100%;
+        text-align: center;
+        border: solid transparent 1px;
+    }
+    #oq-fazemos>div>h1{ margin-top: 18%; margin-left: 50%; visibility: hidden; }
+    #btn-contato{
+        width: 1px;
+        height: 1px;
+        background-color: #19639B;
+        display: flex;
+        align-items: center;
+        border-radius: 100%;
+        margin: 0 auto;
+        text-align: center;
+        margin-top: 40px;
+        cursor: pointer;
+        box-shadow: 0px 3px 8px 0px grey;
+        visibility: hidden;
+    }
+    #btn-contato:hover{
+       box-shadow: 0px 6px 8px 0px grey;
+    }
+
+    #btn-contato>h3{ 
+        color: whitesmoke; 
+        text-transform: uppercase; 
+        margin: 0 auto; 
+        font-size: 20px;
+        letter-spacing: 1.5px;
+    }
+
+    /* Section 3 */
+    #como-trabalhamos{
+        height: 250px;
+        background: linear-gradient(to right, #2185f5, #b7d8fc);
+        box-shadow: 4px 5px 5px 8px #b7d8fc; 
+    }
+    #como-trabalhamos>.container>div{
+        background: linear-gradient(to right, white, whitesmoke, whitesmoke);
+        height: 130%;
+        width: 10%;
+        margin-top: 50px;
+        border-radius: 50px;
+        box-shadow: 3px 3px 20px 1px darkgrey;
+    }
+    #como-trabalhamos>.container>div>div{
+        display: flex;
+        align-items: center;
+        height: 100%;
+        text-align: center; 
+    }
+    #como-trabalhamos>.container>div>div>div{ 
+        text-align: center; 
+        width: 100%; 
+        opacity: 0;
+    }
+    #como-trabalhamos>.container>div>div>div>img{ height: 90px; }
+
+    /* Section 4 */
+    #apresentacao{
+        height: 42%; 
+        display: flex;
+        align-items: center;
+    }
+    #apresentacao>.container>div{ 
+        display: flex;
+        justify-content: center; 
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-right: 500px;
+    }
+    #apresentacao>.container>div>img{ height: 40px; margin-right: 5px; }
+    #apresentacao>.container>div>h3{ margin-top: 7px; margin-left: 5px; }
+    
+    #btn-mensagem{
+        width: 1px;
+        height: 1px;
+        background-color: #25d366;
+        border-radius: 100%;
+        cursor: pointer;
+        box-shadow: 0px 3px 8px 0px grey;
+        display: flex;
+        justify-content: center;
+        margin-left: 15px;
+        margin-right: 15px;
+        transition: box-shadow 0.3s;
+        -o-transition: box-shadow 0.3s;
+        -moz-transition: box-shadow 0.3s;
+        -webkit-transition: box-shadow 0.3s;
+    }
+    #btn-mensagem:hover{
+        box-shadow: 0px 6px 8px 0px grey;
+    }
+    #btn-email{
+        width: 1px;
+        height: 1px;
+        background-color: #c71610;
+        border-radius: 100%;
+        cursor: pointer;
+        box-shadow: 0px 3px 8px 0px grey;
+        display: flex;
+        justify-content: center;
+        margin-left: 15px;
+        margin-right: 15px;
+        transition: box-shadow 0.3s;
+        -o-transition: box-shadow 0.3s;
+        -moz-transition: box-shadow 0.3s;
+        -webkit-transition: box-shadow 0.3s;
+    }
+    #btn-email:hover{
+        box-shadow: 0px 6px 8px 0px grey;
+    }
+
+    #btn-mensagem>div, #btn-email>div{
+        display: flex;
+        align-items: center;
+        text-align: center;
+        height: 100%;
+    }
+
+    #btn-mensagem>div>h3{ 
+        color: whitesmoke; 
+        text-transform: uppercase; 
+        font-size: 20px;
+        margin-bottom: 20px;
+        visibility: hidden;
+        opacity: 0;
+    }
+    #btn-email>div>h3{ 
+        color: whitesmoke; 
+        text-transform: uppercase; 
+        font-size: 20px;
+        margin-bottom: 20px;
+        visibility: hidden;
+        opacity: 0;
+    }
+    #btn-mensagem>div>img, #btn-email>div>img{ 
+        height: 30px; 
+        margin-left: 15px; 
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    #localizacao{
+        height: 60px;
+        width: 100%;
+        border: solid transparent 1px;
+        background-color: rgba(0, 0, 0, 0.7);
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #localizacao>h4{
+        color: whitesmoke;
+        letter-spacing: 0.1px;
+        margin-left: 5px;
+    }
+    #localizacao>img{ height: 25px; margin-right: 5px; }
+
+    /* Section 5 */
+    #rodape-main{
+        height: 240px; /* 250px */
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #email, #telefone, #redes-sociais{
+        width: 25%; 
+        height: 60%;
+    }
+    #email>div, #telefone>div{
+        height: 100%;
+        text-align: center;
+        height: auto;
+        margin-top: 40px;
+    }
+    #redes-sociais>div{
+        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+    }
+    #redes-sociais>div>div{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100%;
+        width: 50px;
+        height: 50px;
+        margin-left: 5px; 
+        margin-right: 5px;
+        background-color: #189FD2;
+        cursor: pointer;
+        transition: background 0.4s;
+        -o-transition: background 0.4s;
+        -moz-transition: background 0.4s;
+        -webkit-transition: background 0.4s;
+    }
+    #redes-sociais>div>div:hover{
+        background-color: #19639B;
+    }
+
+    /* Media Queries */
+    @media screen and (max-width: 1000px){
+        #localizacao{
+            width: 99%;
+            margin: 0 auto;
+        }
+
+        #rodape-main{
+            display: inline-block;
+            height: auto;
+            width: 99.5%;
+        }
+        #email, #telefone, #redes-sociais{
+            height: auto;
+            width: 100%;
+        }
+        #redes-sociais{
+            width: 101%;
+        }
+        #email{
+            border-bottom: solid whitesmoke 2px;
+        }
+        #telefone{
+            border-bottom: solid whitesmoke 2px;
+        }
+        #email>div, #telefone>div, #redes-sociais>div{
+            margin-top: 0px;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+    }
+
+    @media screen and (max-width: 767px){
+        .navbar-custom>.container>div>.nav>li{
+            height: 75px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .navbar-custom>.container>div>.nav>li:hover{
+            background-color: whitesmoke;
+        }
+        .navbar-custom>.container>div>.nav>li>a{
+            height: auto;
+            width: 100%;
+            font-size: 18px;
+            padding: 20px;
+            border-bottom: none;
+            color: #189FD2;
+        }
+        .navbar-brand{ margin-left: 30px; }
+
+        #wallpaper>div>h1{
+            font-size: 26px;
+        }
+        
+        #servicos{
+            height: 240%;
+        }
+        #servicos>div{
+            height: auto;
+            margin-top: 20px;
+        }
+        #servicos>div>div{
+            margin-top: 40px;
+        }
+
+        #oq-fazemos{ height: 135%; }
+        #oq-fazemos>div>h1{ font-size: 30px; margin-top: 115%; }
+
+        #como-trabalhamos>.container>div{
+            height: auto;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        #como-trabalhamos>.container>div>div>div>h3{ font-size: 21px; }
+        #como-trabalhamos>.container>div>div>div>h4{ font-size: 15.5px; }
+
+        #apresentacao{ height: 60%; }
+        #apresentacao>.container>div{
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            margin-right: 0px;
+        }
+        #apresentacao>.container>div>h3{ font-size: 20px; }
+        #apresentacao>.container>div>img{ height: 30px; }
+    }
+
+    @media screen and (min-height: 800px){
+        #apresentacao{ height: 30%; }
+    }
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

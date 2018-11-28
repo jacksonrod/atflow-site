@@ -1,0 +1,420 @@
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="icon" href="Images/Logo/Icon-AtFlowLogo.png">
+
+        <title>AtFlow - Contato</title>
+
+        <!-- Bootstrap -->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" 
+        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+        <!-- JQuery -->
+        <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+
+        <!-- Font Google Lato -->
+        <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+        <!-- Font Google Roboto -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+        <script type="text/javascript">
+        
+            $(document).ready(function(){
+                $('#wallpaper, #localizacao, #rodape-main').css('visibility', 'visible');
+
+                verificaForm();
+            });
+
+            function verificaForm(){
+                $('#form').submit(function(event){
+                    if($('#nome-form').val().length <= 0 || $('#email-form').val().length <= 0
+                    || $('#msg-form').val().length <= 0){
+                        event.preventDefault();
+                        alert("Preencha todas as lacunas para continuar!");
+                        return false;
+                    }
+                });
+            }
+
+        </script>
+    </head>
+
+    <body>
+        <section style="visibility: hidden;" id="wallpaper">
+            <div>
+                <div onclick="location.href='http://www.atflow.com.br'" id="btn-voltar">
+                    <img src="Images/Icons/voltar.png">
+                    <h4>Voltar</h4>
+                </div>
+                <h2>Entre em contato!</h2>
+                <div id="buttons">
+                    <div onclick="location.href='https://api.whatsapp.com/send?phone=5547984140095&text=Olá, tudo bem?'">
+                        <h3>Enviar mensagem</h3>
+                        <img src="Images/Icons/whatsapp.png">
+                    </div>
+                    <div data-toggle="modal" data-target="#modal-contato">
+                        <h3>Enviar E-mail</h3>
+                        <img src="Images/Icons/email_footer.png">
+                    </div>
+                </div> 
+            </div>   
+        </section>
+
+        <section style="visibility: hidden;" id="localizacao">
+            <img src="Images/Icons/localizacao.png">
+            <h4>São Bento do Sul, Santa Catarina</h4>
+        </section>
+
+        <section style="visibility: hidden;" id="rodape-main">
+            <div style="border-left: solid whitesmoke 2px;" id="email">
+                <div>
+                    <img style="height: 40px;" src="Images/Icons/email_footer.png">
+                    <h4 style="color: whitesmoke; margin-top: 15px;">atendimento@atflow.com.br</h4>
+                </div>
+            </div>
+            <div style="border-left: solid whitesmoke 2px;" id="telefone">
+                <div>
+                    <img style="height: 40px;" src="Images/Icons/telefone_footer.png">
+                    <h4 style="color: whitesmoke; margin-top: 15px;">(47)9 8414-0095</h4>
+                </div>
+            </div>
+            <div style="border-left: solid whitesmoke 2px; border-right: solid whitesmoke 2px;" id="redes-sociais">
+                <div>
+                    <div>
+                        <img style="height: 25px;" src="Images/Icons/facebook.png">
+                    </div>
+                    <div>
+                        <img style="height: 25px;" src="Images/Icons/instagram.png">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>            
+            <!-- Modal -->
+            <div class="modal fade" id="modal-contato" tabindex="-1" 
+            role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-md" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h3 class="modal-title" id="exampleModalLabel">
+                                Contato
+                            </h3>
+                        </div>
+                        <div class="modal-body">
+                        
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <form id="form" style="text-align: center;" action="email.php" method="POST">
+                                            <input id="nome-form" placeholder="Nome" class="form-control" type="text" name="nome">
+                                            <input id="email-form" style="margin-top: 10px;"
+                                            placeholder="E-mail" class="form-control" type="text" name="email">   
+                                            <textarea id="msg-form" style="margin-top: 10px;" rows="5" class="form-control"
+                                            placeholder="Digite sua mensagem aqui..." type="text" name="mensagem"></textarea>
+                                            
+                                            <input type="submit" id="submit-form" class="hidden">
+                                        </form>
+                                    </div> 
+                                    <div class="col-md-5">
+                                        <div style="text-align: center;" id="div-redes-sociais-form">
+                                            <h5>Visite-nos nas redes sociais</h5>
+                                            <div>
+                                                <div>
+                                                    <img style="height: 20px;" src="Images/Icons/facebook.png">
+                                                </div>
+                                                <div>
+                                                    <img style="height: 20px;" src="Images/Icons/instagram.png">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <label for="submit-form" class="btn btn-primary">Enviar</label>
+                            <img src="Images/Logo/AtFlowLogo.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+        crossorigin="anonymous"></script>
+    </body>
+
+    <style>
+
+        /* Section Top */
+        html, body{ overflow-x: hidden; }
+        body{
+            font-family: "Lato", sans-serif; 
+            background-color: whitesmoke;
+        }
+
+        .close{ color: whitesmoke; opacity: 1; }
+        .modal-header{ 
+            background-color: #189FD2;
+            border-top-left-radius: 5px; 
+            border-top-right-radius: 5px;
+            border-bottom: solid 5px #19639B;
+        }
+        .modal-open{ padding-right: 0px !important; }
+        .modal-title{
+            margin-left: 20px; 
+            color: whitesmoke;
+            font-weight: bold;
+            font-size: 21px;
+        }
+        .modal-footer{ text-align: center; }
+        .modal-footer>label{
+            width: 150px;
+            height: 40px;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+        }
+        .modal-footer>img{
+            height: 50px; 
+            position: absolute; 
+            bottom: 10px; 
+            right: 20px;
+        }
+        #div-redes-sociais-form>div{ 
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        #div-redes-sociais-form>div>div{
+            margin-top: 5px;
+            width: fit-content;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #189FD2;
+            border-radius: 100%;
+            margin-left: 7px;
+            margin-right: 7px;
+            height: 35px;
+            width: 35px;
+            cursor: pointer;
+            transition: background 0.4s;
+            -o-transition: background 0.4s;
+            -moz-transition: background 0.4s;
+            -webkit-transition: background 0.4s;
+        }
+        #div-redes-sociais-form>div>div:hover{ background-color: #19639B; }
+
+        #wallpaper{
+            height: 70%;
+            background-image: url('Images/wallpaper-contato.jpg');
+            background-position: center;
+            background-size: cover;
+            text-align: center;
+        }
+        #wallpaper>div{
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        #wallpaper>div>h2{
+            color: whitesmoke;
+            margin-top: 0;
+            padding-top: 80px;
+        }
+
+        #btn-voltar{
+            width: 130px;
+            height: 40px;
+            background-color: #19639B;
+            position: absolute;
+            left: 15;
+            top: 15;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.4s;
+            -o-transition: background 0.4s;
+            -moz-transition: background 0.4s;
+            -webkit-transition: background 0.4s;
+        }
+        #btn-voltar:hover{
+            background-color: #189FD2;
+        }
+        #btn-voltar>img{ height: 25px; margin-right: 5px; }
+        #btn-voltar>h4{
+            font-size: 19px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: whitesmoke;
+            margin-left: 5px;
+        }
+
+        #buttons{
+            display: flex;
+            justify-content: center;
+            margin-top: 100px;
+        }
+        #buttons>div{
+            width: 300px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #19639B;
+            box-shadow: 0px 3px 8px 0px grey;
+            border-radius: 5px;
+            margin-left: 20px;
+            margin-right: 20px;
+            cursor: pointer;
+            transition: box-shadow 0.3s;
+            -o-transition: box-shadow 0.3s;
+            -moz-transition: box-shadow 0.3s;
+            -webkit-transition: box-shadow 0.3s;
+        }
+        #buttons>div:hover{
+            box-shadow: 0px 6px 8px 0px grey;
+        }
+        #buttons>div>h3{ 
+            color: whitesmoke; 
+            text-transform: uppercase; 
+            font-size: 19px; 
+            margin-right: 8px;
+            margin-top: 10px;
+        }
+        #buttons>div>img{
+            height: 27px; 
+            margin-left: 8px; 
+            margin-top: -2px;
+        }
+
+        /* Section Bottom */
+        #localizacao{
+            height: 60px;
+            width: 100%;
+            border: solid transparent 1px;
+            background-color: rgba(0, 0, 0, 0.7);
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #localizacao>h4{
+            color: whitesmoke;
+            letter-spacing: 0.1px;
+            margin-left: 5px;
+        }
+        #localizacao>img{ height: 25px; margin-right: 5px; }
+
+        #rodape-main{
+            height: 240px;
+            background-color: rgba(0, 0, 0, 0.7);
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #email, #telefone, #redes-sociais{
+            width: 25%; 
+            height: 60%;
+        }
+        #email>div, #telefone>div{
+            height: 100%;
+            text-align: center;
+            height: auto;
+            margin-top: 40px;
+        }
+        #redes-sociais>div{
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+        }
+        #redes-sociais>div>div{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 100%;
+            width: 50px;
+            height: 50px;
+            margin-left: 5px; 
+            margin-right: 5px;
+            background-color: #189FD2;
+            cursor: pointer;
+            transition: background 0.4s;
+            -o-transition: background 0.4s;
+            -moz-transition: background 0.4s;
+            -webkit-transition: background 0.4s;
+        }
+        #redes-sociais>div>div:hover{
+            background-color: #19639B;
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 1000px){
+            #localizacao{
+                width: 99%;
+                margin: 0 auto;
+            }
+
+            #rodape-main{
+                display: inline-block;
+                height: auto;
+                width: 99.5%;
+            }
+            #email, #telefone, #redes-sociais{
+                height: auto;
+                width: 100%;
+            }
+            #redes-sociais{
+                width: 101%;
+            }
+            #email{
+                border-bottom: solid whitesmoke 2px;
+            }
+            #telefone{
+                border-bottom: solid whitesmoke 2px;
+            }
+            #email>div, #telefone>div, #redes-sociais>div{
+                margin-top: 0px;
+                padding-top: 30px;
+                padding-bottom: 30px;
+            }
+        }
+
+        @media screen and (max-width: 767px){
+            #wallpaper{ height: 90%; }
+            #wallpaper>div>h2{
+                color: whitesmoke;
+                margin-top: 0;
+                padding-top: 110px;
+            }
+
+            #buttons{
+                display: inline-block;
+                margin-top: 20px;
+            }
+            #buttons>div{ margin-top: 25px; }
+        }
+
+    </style>
+
+</html>
