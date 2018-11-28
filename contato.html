@@ -36,6 +36,7 @@
                 verificaForm();
             });
 
+            //Verfica se o formulário possui espaços não preenchidos
             function verificaForm(){
                 $('#form').submit(function(event){
                     if($('#nome-form').val().length <= 0 || $('#email-form').val().length <= 0
@@ -51,6 +52,8 @@
     </head>
 
     <body>
+        
+        <!-- Primeira Section no topo da página -->
         <section style="visibility: hidden;" id="wallpaper">
             <div>
                 <div onclick="location.href='http://www.atflow.com.br'" id="btn-voltar">
@@ -71,11 +74,13 @@
             </div>   
         </section>
 
+        <!-- Section onde se encontra a localização da empresa (Cidade da empresa) -->
         <section style="visibility: hidden;" id="localizacao">
             <img src="Images/Icons/localizacao.png">
             <h4>São Bento do Sul, Santa Catarina</h4>
         </section>
 
+        <!-- Rodapé da página, onde tem dados para contato -->
         <section style="visibility: hidden;" id="rodape-main">
             <div style="border-left: solid whitesmoke 2px;" id="email">
                 <div>
@@ -101,6 +106,7 @@
             </div>
         </section>
 
+        <!-- Modal que é aberto ao clicar em enviar e-mail -->
         <section>            
             <!-- Modal -->
             <div class="modal fade" id="modal-contato" tabindex="-1" 
@@ -120,6 +126,9 @@
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-md-7">
+                                        
+                                        <!-- Formulário de contato para o e-mail -->
+                                        
                                         <form id="form" style="text-align: center;" action="email.php" method="POST">
                                             <input id="nome-form" placeholder="Nome" class="form-control" type="text" name="nome">
                                             <input id="email-form" style="margin-top: 10px;"
@@ -129,6 +138,9 @@
                                             
                                             <input type="submit" id="submit-form" class="hidden">
                                         </form>
+                                        
+                                        <!-- Fim do formulário -->
+                                        
                                     </div> 
                                     <div class="col-md-5">
                                         <div style="text-align: center;" id="div-redes-sociais-form">
